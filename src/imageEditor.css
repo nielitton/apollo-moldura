@@ -1,0 +1,49 @@
+.editor-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.file-input {
+  display: block;
+  margin: 10px auto;
+}
+
+.frame-select {
+  display: block;
+  margin: 10px auto;
+}
+
+.image-frame-container {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ajusta a moldura para caber dentro da imagem */
+  pointer-events: none;
+  z-index: 2; /* Garante que a moldura esteja sobre a imagem */
+}
+
+.download-button {
+  transition: all .5s;
+  color: white;
+  background-color: #00b4d8;
+  border: 1px solid #00b4d8
+}
+
+.download-button:hover {
+  box-shadow: 5px 5px 5px 2px #00b4d838;
+  border: 1px solid #00b4d838
+}
