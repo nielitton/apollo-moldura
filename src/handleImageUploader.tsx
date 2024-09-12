@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import './imageEditor.css'
+import React, { useState, ChangeEvent } from 'react';
+import './imageEditor.css';
 import html2canvas from 'html2canvas';
 
-const ImageEditor = () => {
+const ImageEditor: React.FC = () => {
     const [image, setImage] = useState<string | ArrayBuffer | null>(null);
-    const handleImageUpload = (event) => {
-        const file = event.target.files[0];
+    
+    const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
@@ -16,7 +17,7 @@ const ImageEditor = () => {
     };
 
     const downloadImage = () => {
-        const container = document.querySelector('.image-frame-container');
+        const container = document.querySelector('.image-frame-container') as HTMLElement;
         html2canvas(container).then(canvas => {
             const link = document.createElement('a');
             link.href = canvas.toDataURL('image/png');
@@ -34,11 +35,11 @@ const ImageEditor = () => {
                 className="file-input"
                 placeholder="Escolha uma imagem"
             />
-            <span>Caso sua imagem não se encaixe com a moldura, não se preocupe, quando você fizer o download, ela se ajustara</span>
+            <span>Caso sua imagem não se encaixe com a moldura, não se preocupe, quando você fizer o download, ela se ajustará</span>
             <div className="image-frame-container">
                 {image &&
                     <div>
-                        <img src={image} alt="Imagem" className="image" />
+                        <img src={image as string} alt="Imagem" className="image" />
                         <img src={'/frames/moldura.png'} alt="Moldura" className="frame" />
                     </div>
                 }
